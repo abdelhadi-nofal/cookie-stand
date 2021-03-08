@@ -22,7 +22,7 @@ header{
     top: 0px;
     height: 100%;
     font-size: 30px;
-    font-weight: 4000;
+    font-weight: 4000px;
     text-decoration: none;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
@@ -44,4 +44,24 @@ h1{
     margin-left: 400px;
     font-size: 60px;
     color: darkgrey;
+}
+
+p{
+    font-weight: bold;
+    color: rgb(59, 59, 59);
+
+}
+
+footer{
+    background-color: rgb(153, 152, 152);
+    width:100%;
+    top: 0%;
+    overflow: hidden;
+    left: 100%;
+    color: rgb(49, 45, 45);
+    padding-top: 10px;
+    margin-left: -5px;
+    margin-bottom: -10px;
+    padding-right: 15px;
+    text-align: center;
 }
