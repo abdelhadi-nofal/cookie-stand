@@ -51,15 +51,26 @@ function goal(City){
     headHours.innerText=(City.numberOfCustomersPerHour() * Math.floor(City.AvgCookie));
     head2.appendChild(headHours);
     tbl.appendChild(head2);
-
   }
+  
 }
+
 
 goal(Seattle);
 goal(Dubai);
 goal(Lima);
 goal(Paris);
 goal(Tokyo);
+
+let head2=document.createElement('tr');
+for(let i=0;i<16;i++){
+  let headHours=document.createElement('td');
+  headHours.innerText=('Total');
+  head2.appendChild(headHours);
+  tbl.appendChild(head2);
+}
+
+
 
 
 
