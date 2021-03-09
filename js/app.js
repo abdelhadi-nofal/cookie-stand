@@ -5,6 +5,7 @@ function City(name,max,min,avg){
   this.maxHourlyCustomers= max ,
   this.minHourlyCustomers= min,
   this.AvgCookie=avg,
+  this.totalPerHour=[];
   this.numberOfCustomersPerHour=function(){
     return Math.floor(Math.random() * (this.maxHourlyCustomers - this.minHourlyCustomers + 1) + this.minHourlyCustomers);
   };
@@ -19,42 +20,53 @@ let Paris=new City('Paris',38,20,2.3);
 let Tokyo=new City('Tokyo',24,3,1.2);
 
 
-let tbl=document.getElementById('tb1');
-let head=document.createElement('tr');
-let headHours=document.createElement('th');
-headHours.innerText=('City Name');
-head.appendChild(headHours);
-tbl.appendChild(head);
 
 
+let tb1=document.getElementById('tb1');
+
+
+let thead=document.createElement('thead');
+let theadempty=document.createElement('th');
+theadempty.innerText=('');
+thead.appendChild(theadempty);
+tb1.appendChild(thead);
 for(let i=0;i<workingHours.length;i++){
-  let headHours=document.createElement('th');
-  headHours.innerText=(workingHours[i]);
-  head.appendChild(headHours);
-  tbl.appendChild(head);
+  let theadhours=document.createElement('th');
+  theadhours.innerText=(workingHours[i]);
+  thead.appendChild(theadhours);
+  tb1.appendChild(thead);
 }
 
-let lastCol=document.createElement('th');
-lastCol.innerText=('Daily Location Total');
-head.appendChild(lastCol);
-tbl.appendChild(head);
+let dailytotal=document.createElement('th');
+dailytotal.innerText=('Daily Location Total');
+thead.appendChild(dailytotal);
+tb1.appendChild(thead);
+
+
 
 
 function goal(City){
-  let head2=document.createElement('tr');
+  let cites=document.createElement('tr');
   let headHours=document.createElement('td');
   headHours.innerText=City.name;
-  head2.appendChild(headHours);
-  tbl.appendChild(head2);
-  for(let i=0;i<workingHours.length;i++){
-    let headHours=document.createElement('td');
-    headHours.innerText=(City.numberOfCustomersPerHour() * Math.floor(City.AvgCookie));
-    head2.appendChild(headHours);
-    tbl.appendChild(head2);
-  }
-  
-}
+  cites.appendChild(headHours);
+  tb1.appendChild(cites);
+  let totalDay=0;
 
+  for(let i=0;i<workingHours.length;i++){
+    let hourlyTotal = Math.floor(City.numberOfCustomersPerHour() * City.AvgCookie);
+    totalDay = totalDay + hourlyTotal;
+    let headHours=document.createElement('td');
+    headHours.innerText=(hourlyTotal);
+    cites.appendChild(headHours);
+    tb1.appendChild(cites);
+  }
+
+  let dailytot=document.createElement('td');
+  dailytot.innerText=(totalDay);
+  cites.appendChild(dailytot);
+  tb1.appendChild(cites);
+}
 
 goal(Seattle);
 goal(Dubai);
@@ -62,35 +74,22 @@ goal(Lima);
 goal(Paris);
 goal(Tokyo);
 
-let head2=document.createElement('tr');
-for(let i=0;i<16;i++){
-  let headHours=document.createElement('td');
-  headHours.innerText=('Total');
-  head2.appendChild(headHours);
-  tbl.appendChild(head2);
+
+
+
+let tota=0;
+let totalsPerHour=document.createElement('tfoot');
+totalsPerHour.innerText=('Totals');
+tb1.appendChild(totalsPerHour);
+for(let i=0;i<workingHours.length;i++){
+  let totalData=document.createElement('td');
+  totalData.innerText=(tota);
+  totalsPerHour.appendChild(totalData);
 }
 
 
 
 
-
-// let unlist5=document.createElement('ul');
-// let totalt=0;
-// let ht=document.getElementById('demo5');
-// let Tokyo=new City(24,3,1.2);
-
-
-// for (let i = 0; i < workingHours.length; i++) {
-//   let element = document.createElement('li');
-//   let hourlyTotal = Tokyo.numberOfCustomersPerHour() * Math.floor(Tokyo.AvgCookie);
-//   element.innerText = workingHours[i] + ':' + hourlyTotal + ' cookies';
-//   unlist5.appendChild(element);
-//   totalt = totalt + hourlyTotal;
-// }
-// let total5=document.createElement('li');
-// total5.innerText = 'Total:' + totalt + ' cookies';
-// unlist5.appendChild(total5);
-// ht.appendChild(unlist5);
 
 
 
