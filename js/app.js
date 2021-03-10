@@ -1,11 +1,31 @@
 'use strict';
 
+
+let form=document.getElementById('demo2');
+
+form.addEventListener('submit',function (event){
+  event.preventDefault();
+  let userInpu=event.target.userInpu.value;
+  let userInpu1=event.target.userInpu1.value;
+  let userInpu2=event.target.userInpu2.value;
+  let userInpu3=event.target.userInpu3.value;
+  let newCit =new City(userInpu,userInpu1,userInpu2,userInpu3);
+  goal(newCit);
+  return;
+
+});
+
+
+let locations=[];
+
 function City(name,max,min,avg){
   this.name = name;
   this.maxHourlyCustomers= max ,
   this.minHourlyCustomers= min,
   this.AvgCookie=avg,
-  this.totalPerHour=[];
+  this.tota=0;
+  this.totalsPerHour=[];
+  locations.push(this),
   this.numberOfCustomersPerHour=function(){
     return Math.floor(Math.random() * (this.maxHourlyCustomers - this.minHourlyCustomers + 1) + this.minHourlyCustomers);
   };
@@ -18,8 +38,6 @@ let Dubai=new City('Dubai',38,11,3.7);
 let Lima=new City('Lima',16,2,4.6);
 let Paris=new City('Paris',38,20,2.3);
 let Tokyo=new City('Tokyo',24,3,1.2);
-
-
 
 
 let tb1=document.getElementById('tb1');
@@ -55,6 +73,8 @@ function goal(City){
 
   for(let i=0;i<workingHours.length;i++){
     let hourlyTotal = Math.floor(City.numberOfCustomersPerHour() * City.AvgCookie);
+    City.tota+=hourlyTotal;
+    City.totalsPerHour.push(hourlyTotal);
     totalDay = totalDay + hourlyTotal;
     let headHours=document.createElement('td');
     headHours.innerText=(hourlyTotal);
@@ -66,6 +86,7 @@ function goal(City){
   dailytot.innerText=(totalDay);
   cites.appendChild(dailytot);
   tb1.appendChild(cites);
+
 }
 
 goal(Seattle);
@@ -77,15 +98,41 @@ goal(Tokyo);
 
 
 
-let tota=0;
-let totalsPerHour=document.createElement('tfoot');
-totalsPerHour.innerText=('Totals');
-tb1.appendChild(totalsPerHour);
+
+let tfoot=document.createElement('tfoot');
+tfoot.innerText=('Totals');
+tb1.appendChild(tfoot);
+
+
 for(let i=0;i<workingHours.length;i++){
+  let tota = 0;
+  for(let j=0;j< locations.length;j++){
+    tota +=locations[j].totalsPerHour[i];
+  }
   let totalData=document.createElement('td');
   totalData.innerText=(tota);
-  totalsPerHour.appendChild(totalData);
+  tfoot.appendChild(totalData);
 }
+
+let tots=0;
+for(let i=0;i<workingHours.length;i++){
+  for(let j=0;j< locations.length;j++){
+    tots +=locations[j].totalsPerHour[i];
+  }
+
+}
+
+
+let allTotal=document.createElement('td');
+allTotal.innerText=(tots);
+tfoot.appendChild(allTotal);
+
+
+
+
+
+
+
 
 
 
