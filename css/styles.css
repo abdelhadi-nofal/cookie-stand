@@ -187,3 +187,82 @@ footer{
     text-align: center;
     
 } 
+
+table{
+    background-color: rgb(184, 168, 141);
+    color: rgb(0, 0, 0);
+    margin-top: 50px;
+    margin-left: 300px;
+    font-family: 'RocknRoll One', sans-serif;
+    font-weight: bolder;
+    
+}
+
+table tfoot{
+    background-color: rgb(117, 158, 101);
+}
+
+.sallo{
+    color: rgb(184, 168, 141);
+    font-family: 'RocknRoll One', sans-serif;
+    margin-left: 500px;
+}
+.sallo1{
+    color: rgb(184, 168, 141);
+    font-family: 'RocknRoll One', sans-serif;
+    margin-left: 600px;
+}
+
+form{
+    color: rgb(184, 168, 141);
+    font-family: 'RocknRoll One', sans-serif;
+    margin-left: 400px;
+    margin-right: 300px;
+
+}
+
+
+table tr :nth-last-child(16n){
+    background-color: rgb(176, 192, 85);
+
+}
+
+table thead :nth-last-child(1n){
+    background-color: rgb(192, 155, 85);
+
+
+}
+
+table thead :nth-child(16){
+    background-color: rgb(117, 158, 101);
+
+}
+table tr :nth-child(16){
+    background-color: rgb(117, 158, 101);
+
+}
+
+.home{
+    font-family: 'RocknRoll One', sans-serif;
+    margin-left: 650px;
+    color: rgb(184, 168, 141);
+
+}
+
+a{
+    color: rgb(184, 168, 141);
+}
+
+form .sub{
+    background-color: rgb(184, 168, 141);
+    border: none;
+    padding: 15px;
+    border-radius: 15px;
+    margin-left: 250px;
+    margin-top: 30px;
+    font-family: 'RocknRoll One', sans-serif;
+    color: rgb(116, 99, 35);
+    
+}
+
+
