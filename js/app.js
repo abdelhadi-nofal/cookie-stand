@@ -1,21 +1,5 @@
 'use strict';
 
-
-let form=document.getElementById('demo2');
-
-form.addEventListener('submit',function (event){
-  event.preventDefault();
-  let userInpu=event.target.userInpu.value;
-  let userInpu1=event.target.userInpu1.value;
-  let userInpu2=event.target.userInpu2.value;
-  let userInpu3=event.target.userInpu3.value;
-  let newCit =new City(userInpu,userInpu1,userInpu2,userInpu3);
-  goal(newCit);
-  return;
-
-});
-
-
 let locations=[];
 
 function City(name,max,min,avg){
@@ -23,11 +7,10 @@ function City(name,max,min,avg){
   this.maxHourlyCustomers= max ,
   this.minHourlyCustomers= min,
   this.AvgCookie=avg,
-  this.tota=0;
   this.totalsPerHour=[];
   locations.push(this),
   this.numberOfCustomersPerHour=function(){
-    return Math.floor(Math.random() * (this.maxHourlyCustomers - this.minHourlyCustomers + 1) + this.minHourlyCustomers);
+    return Math.ceil(Math.random() * (this.maxHourlyCustomers - this.minHourlyCustomers + 1) + this.minHourlyCustomers);
   };
 }
 
@@ -72,7 +55,7 @@ function goal(City){
   let totalDay=0;
 
   for(let i=0;i<workingHours.length;i++){
-    let hourlyTotal = Math.floor(City.numberOfCustomersPerHour() * City.AvgCookie);
+    let hourlyTotal = Math.ceil(City.numberOfCustomersPerHour() * City.AvgCookie);
     City.tota+=hourlyTotal;
     City.totalsPerHour.push(hourlyTotal);
     totalDay = totalDay + hourlyTotal;
@@ -99,37 +82,73 @@ goal(Tokyo);
 
 
 
-let tfoot=document.createElement('tfoot');
-tfoot.innerText=('Totals');
-tb1.appendChild(tfoot);
 
 
-for(let i=0;i<workingHours.length;i++){
-  let tota = 0;
-  for(let j=0;j< locations.length;j++){
-    tota +=locations[j].totalsPerHour[i];
+
+
+function goal2(){
+  let tfoot=document.createElement('tfoot');
+  tfoot.innerText=('Totals');
+  tb1.appendChild(tfoot);
+
+
+  for(let i=0;i<workingHours.length;i++){
+    let tota = 0;
+    for(let j=0;j< locations.length;j++){
+      tota +=locations[j].totalsPerHour[i];
+    }
+    let totalData=document.createElement('td');
+    totalData.innerText=(tota);
+    tfoot.appendChild(totalData);
+
   }
-  let totalData=document.createElement('td');
-  totalData.innerText=(tota);
-  tfoot.appendChild(totalData);
+
+  let tots=0;
+  for(let i=0;i<workingHours.length;i++){
+    for(let j=0;j< locations.length;j++){
+      tots +=locations[j].totalsPerHour[i];
+    }
+
+  }
+
+  let allTotal=document.createElement('td');
+  allTotal.innerText=(tots);
+  tfoot.appendChild(allTotal);
+
 }
 
-let tots=0;
-for(let i=0;i<workingHours.length;i++){
-  for(let j=0;j< locations.length;j++){
-    tots +=locations[j].totalsPerHour[i];
-  }
+goal2();
 
-}
+let form=document.getElementById('demo2');
+form.addEventListener('submit',function (event){
+  event.preventDefault();
+  let userInpu=event.target.userInpu.value;
+  let userInpu1=event.target.userInpu1.value;
+  let userInpu2=event.target.userInpu2.value;
+  let userInpu3=event.target.userInpu3.value;
+  let newCit =new City(userInpu,userInpu1,userInpu2,userInpu3);
+  goal(newCit);
+  goal2();
+  return;
+
+});
 
 
-let allTotal=document.createElement('td');
-allTotal.innerText=(tots);
-tfoot.appendChild(allTotal);
 
 
-
-
+// let form=document.getElementById('demo2');
+// function hadi (event){
+//   event.preventDefault();
+//   let userInpu=event.target.userInpu.value;
+//   let userInpu1=event.target.userInpu1.value;
+//   let userInpu2=event.target.userInpu2.value;
+//   let userInpu3=event.target.userInpu3.value;
+//   let newCit =new City(userInpu,userInpu1,userInpu2,userInpu3);
+//   goal(newCit);
+//   goal2();
+//   return;
+// }
+// form.addEventListener('submit',hadi());
 
 
 
