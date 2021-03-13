@@ -192,6 +192,8 @@ footer{
     
 } 
 
+
+
 table{
     background-color: rgb(184, 168, 141);
     color: rgb(0, 0, 0);
@@ -278,5 +280,24 @@ footer .footerlogo{
     margin-right: 200px;
 }
 
+
+
+.maxinput {
+    margin-left: 100px;
+  }
+
+.mininput {
+    margin-left: 103px;
+    margin-bottom: 0%;
+  }
+
+.avginput{
+    margin-left: 193px;
+    margin-top: 0%;
+}  
+
+.nameinput{
+    margin-left: 202px;
+}
 
 
