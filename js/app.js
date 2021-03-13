@@ -79,15 +79,8 @@ goal(Paris);
 goal(Tokyo);
 
 
-
-
-
-
-
-
-
 function goal2(){
-  document.getElementById("tb1").deleteTFoot();
+  document.getElementById('tb1').deleteTFoot();
   let tfoot=document.createElement('tfoot');
   tfoot.innerText=('Totals');
   tb1.appendChild(tfoot);
@@ -134,21 +127,6 @@ form.addEventListener('submit',function (event){
 });
 
 
-
-
-// let form=document.getElementById('demo2');
-// function hadi (event){
-//   event.preventDefault();
-//   let userInpu=event.target.userInpu.value;
-//   let userInpu1=event.target.userInpu1.value;
-//   let userInpu2=event.target.userInpu2.value;
-//   let userInpu3=event.target.userInpu3.value;
-//   let newCit =new City(userInpu,userInpu1,userInpu2,userInpu3);
-//   goal(newCit);
-//   goal2();
-//   return;
-// }
-// form.addEventListener('submit',hadi());
 
 
 
