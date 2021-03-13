@@ -87,10 +87,10 @@ goal(Tokyo);
 
 
 function goal2(){
+  document.getElementById("tb1").deleteTFoot();
   let tfoot=document.createElement('tfoot');
   tfoot.innerText=('Totals');
   tb1.appendChild(tfoot);
-
 
   for(let i=0;i<workingHours.length;i++){
     let tota = 0;
@@ -123,9 +123,9 @@ let form=document.getElementById('demo2');
 form.addEventListener('submit',function (event){
   event.preventDefault();
   let userInpu=event.target.userInpu.value;
-  let userInpu1=event.target.userInpu1.value;
-  let userInpu2=event.target.userInpu2.value;
-  let userInpu3=event.target.userInpu3.value;
+  let userInpu1= parseInt( event.target.userInpu1.value);
+  let userInpu2=parseInt(event.target.userInpu2.value);
+  let userInpu3=parseInt(event.target.userInpu3.value);
   let newCit =new City(userInpu,userInpu1,userInpu2,userInpu3);
   goal(newCit);
   goal2();
